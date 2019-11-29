@@ -43,12 +43,11 @@ namespace MovieRental.Controllers
             {
                 var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
                 customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-
             }
 
- 
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
@@ -63,7 +62,7 @@ namespace MovieRental.Controllers
 
         public ActionResult Details(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return HttpNotFound();
@@ -86,6 +85,5 @@ namespace MovieRental.Controllers
 
             return View("CustomerForm", viewModel);
         }
-
     }
 }
