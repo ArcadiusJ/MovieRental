@@ -97,5 +97,18 @@ namespace MovieRental.Controllers
 
             return View("CustomerForm", viewModel);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var entity = _context.Customers.FirstOrDefault(c => c.Id == id);
+            if (entity != null)
+            {
+                _context.Customers.Remove(entity);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Customers");
+        }
+
     }
 }

@@ -1,0 +1,37 @@
+﻿@model MovieRental.ViewModels.RentalFormViewModel
+
+@{
+    ViewBag.Title = "MovieRentalForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MovieRentalForm</h2>
+
+@using (Html.BeginForm("Save", "Rentals"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+<div class="form-group">
+    @Html.LabelFor(m => m.Customer)
+    @Html.DropDownListFor(m => m.Customer, new SelectList(Model.Customers, "Id", "Name"), "-")
+    @Html.ValidationMessageFor(m => m.Customer)
+</div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Movie)
+        @Html.DropDownListFor(m => m.Movie,  new SelectList(Model.Movies, "Id", "Name"), "-")
+        @Html.ValidationMessageFor(m => m.Movie)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ReturnDate)
+        @Html.TextBoxFor(m => m.ReturnDate, "{0:dd MM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ReturnDate)
+    </div>
+
+
+    @Html.HiddenFor(m => m.Rental.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

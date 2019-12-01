@@ -6,7 +6,6 @@
 }
 
 <h2>@Model.Name</h2>
-
 <ul>
     <li>Membership Type: @Model.MembershipType.Name</li>
     @if (Model.Birthdate.HasValue)
@@ -14,3 +13,11 @@
         <li>Birthdate: @Model.Birthdate.Value.ToShortDateString()</li>
     }
 </ul>
+
+@*<p>
+   @Html.DropDownListFor(m => Model.Movies, new SelectList(Model.Movies, "Id", "Name"), "-")
+   @Html.Action("AddRental", "New", "Customers", null, new { @class = "btn btn-primary" })
+
+
+</p>
+    *@
