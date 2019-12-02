@@ -24,7 +24,7 @@ namespace MovieRental.Controllers
             _context.Dispose();
         }
         // GET: MovieRental
-        public ActionResult Index()
+        public ActionResult New()
         {
             var model = new RentalFormViewModel();
 
@@ -39,11 +39,29 @@ namespace MovieRental.Controllers
         [HttpPost]
         public ActionResult Save(Rental rental)
         {
+            rental.DateCreated = DateTime.Now;
 
-
-            
-
+            _context.Rentals.Add(rental);
             _context.SaveChanges();
+
+            return RedirectToAction("Index", "Rentals");
+        }
+
+        public ViewResult Index()
+        {
+            var rentals = _context.Rentals.Include(m => m.Movie).Include(c => c.Customer).ToList();
+
+            return View("Index", rentals);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var entity = _context.Rentals.FirstOrDefault(c => c.Id == id);
+            if (entity != null)
+            {
+                _context.Rentals.Remove(entity);
+                _context.SaveChanges();
+            }
 
             return RedirectToAction("Index", "Rentals");
         }

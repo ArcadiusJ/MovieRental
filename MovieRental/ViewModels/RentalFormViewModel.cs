@@ -9,33 +9,27 @@ namespace MovieRental.ViewModels
 {
     public class RentalFormViewModel
     {
+        public IEnumerable<Customer> Customers { get; set; }
+        public IEnumerable<Movie> Movies { get; set; }
 
-        public Rental Rental { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [Display(Name = "Customer")]
-        public Customer Customer { get; set; }
-        public List<Customer> Customers { get; set; }
+        public int CustomerId { get; set; }
 
         [Required]
         [Display(Name = "Movie")]
-        public Movie Movie { get; set; }
-        public List<Movie> Movies { get; set; }
+        public int MovieId { get; set; }
 
         [Required]
         [Display(Name = "Return Date")]
         public DateTime ReturnDate { get; set; }
 
-  
+
         public RentalFormViewModel()
         {
-            ReturnDate = DateTime.Today.AddDays(7);
-            
-        }
-
-        public RentalFormViewModel(Rental rental)
-        {
-            
+            ReturnDate = DateTime.Now.AddDays(7);
         }
     }
 }

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MovieRental.Models.Rental>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rentals</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any rentals yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Movie</th>
+                <th>Date Created</th>
+                <th>Return Date</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rental in Model)
+            {
+                <tr>
+                    <td>@rental.Customer.Name</td>
+                    <td>@rental.Movie.Name</td>
+                    <td>@rental.DateCreated.ToString("dd-MM-yyyy HH:mm")</td>
+                    <td>@(rental.ReturnDate.HasValue ? rental.ReturnDate.Value.ToString("dd-MM-yyyy") : "-")</td>
+                    <td>
+                        <div class="text-center">
+                            <input value="Delete" type="button" class="btn btn-danger" style="display: inline-block" onclick="location.href='@Url.Action("Delete", "Rentals", new { id = rental.Id })'" />
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

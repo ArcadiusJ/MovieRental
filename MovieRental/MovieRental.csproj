@@ -220,6 +220,18 @@
     <Compile Include="Migrations\201912011503520_AddNewRental.Designer.cs">
       <DependentUpon>201912011503520_AddNewRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912011857373_AddRentalRequired.cs" />
+    <Compile Include="Migrations\201912011857373_AddRentalRequired.Designer.cs">
+      <DependentUpon>201912011857373_AddRentalRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912021959433_RentalChanged.cs" />
+    <Compile Include="Migrations\201912021959433_RentalChanged.Designer.cs">
+      <DependentUpon>201912021959433_RentalChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912022007351_DateTimeFormatUpdate.cs" />
+    <Compile Include="Migrations\201912022007351_DateTimeFormatUpdate.Designer.cs">
+      <DependentUpon>201912022007351_DateTimeFormatUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -303,6 +315,7 @@
     <Content Include="Views\Movies\MovieForm.cshtml" />
     <Content Include="Views\Movies\CustomerForm.cshtml" />
     <Content Include="Views\Rentals\RentalForm.cshtml" />
+    <Content Include="Views\Rentals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -353,6 +366,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912011503520_AddNewRental.resx">
       <DependentUpon>201912011503520_AddNewRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912011857373_AddRentalRequired.resx">
+      <DependentUpon>201912011857373_AddRentalRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912021959433_RentalChanged.resx">
+      <DependentUpon>201912021959433_RentalChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912022007351_DateTimeFormatUpdate.resx">
+      <DependentUpon>201912022007351_DateTimeFormatUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
